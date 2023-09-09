@@ -63,4 +63,10 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template("sign_up.html", user=current_user)
+@auth.route('/muscle', methods=['GET', 'POST'])
+def muscle():
+    return render_template("muscle.html", user=current_user)
+
+@auth.route('/exercise', methods=['GET', 'POST'])
+def exercise():
+    return render_template("exercise.html", user=current_user)
