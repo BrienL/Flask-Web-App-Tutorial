@@ -1,49 +1,42 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
     content %}
     <form method="POST">
-      <h3 align="center">Sign Up</h3>
+      <h3 align="center">Exercises</h3>
       <div class="form-group">
-        <label for="email">Email Address</label>
+        <label for="ExerName">Name of Exercise</label>
         <input
-          type="email"
+          type="name"
           class="form-control"
-          id="email"
-          name="email"
-          placeholder="Enter email"
+          id="ExerName"
+          name="Exername"
+          placeholder="Enter exercise name"
         />
       </div>
       <div class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="MuscleGroup">Muscle group</label>
         <input
-          type="text"
+          type="muscle"
           class="form-control"
-          id="firstName"
-          name="firstName"
-          placeholder="Enter first name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password1"
-          name="password1"
-          placeholder="Enter password"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password2">Password (Confirm)</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password2"
-          name="password2"
-          placeholder="Confirm password"
+          id="MuscleGroup"
+          name="MuscleGroup"
+          placeholder="Enter muscle group"
         />
       </div>
       <br />
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <br />
+    <h1 align="center">Exercises</h1>
+    <ul class="list-group list-group-flush" id="exercise">
+      {% for exercise in user.exercise %}
+      <li class="list-group-item">
+        {{ exercise.data }}
+        <button type="button" class="close" onClick="deleteExercise({{ exercise.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
     {% endblock %}
     

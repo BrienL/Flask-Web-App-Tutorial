@@ -16,3 +16,12 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note')
+
+
+class Exercise(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(150), unique=True)
+    muscle = db.Column(db.String(150))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+
+
